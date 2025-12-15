@@ -6,7 +6,8 @@ import pickle
 std = pickle.load(open("models/StandardScaler.pkl","rb"))
 model = pickle.load(open("models/lin_model.pkl","rb"))
 
-app = Flask(__name__)
+application = Flask(__name__)
+app = application
 
 @app.route("/")
 def index():
