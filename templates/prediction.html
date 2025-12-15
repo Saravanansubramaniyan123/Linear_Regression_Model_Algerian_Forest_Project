@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FWI Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1f4037;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            background-color: #1f4037;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #145a4f;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-left: 5px solid #2e7d32;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>FWI Prediction</h2>
+
+        <form action="/prediction" method="post">
+
+            <label>Temperature:</label>
+            <input type="number" step="any" name="Temperature" required>
+
+            <label>Relative Humidity (RH):</label>
+            <input type="number" step="any" name="RH" required>
+
+            <label>Wind Speed (Ws):</label>
+            <input type="number" step="any" name="Ws" required>
+
+            <label>Rain:</label>
+            <input type="number" step="any" name="Rain" required>
+
+            <label>FFMC:</label>
+            <input type="number" step="any" name="FFMC" required>
+
+            <label>DMC:</label>
+            <input type="number" step="any" name="DMC" required>
+
+            <label>ISI:</label>
+            <input type="number" step="any" name="ISI" required>
+
+            <label>Classes:</label>
+            <input type="number" name="Classes" required>
+
+            <label>Region:</label>
+            <input type="number" name="Region" required>
+
+            <button type="submit">Predict FWI</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                Predicted FWI: <strong>{{ prediction }}</strong>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
